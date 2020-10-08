@@ -1,0 +1,109 @@
+{% load static %}
+<html>
+   <head>
+      <title>Connect 4</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="{% static 'js/main.js' %}"></script>
+      <script type="text/javascript">
+        var user = '{{request.user}}'
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+    </script>
+   </head>
+
+   <body>
+   	  <div class="container">
+   	  	<div class="row">
+   	  		<div class="col-md-4">
+   	  			<div class="card card-body h-100  border-info">
+	   	  		  <div id="mask"></div>
+			      <h2>Connect 4</h2>
+			      <hr/>
+			      <p id='redPlayer'>Player Red   : <strong>{{ redPlayer }}</strong></p> 
+			      <p id='yellowPlayer'>Player Yellow: <strong>{{ yellowPlayer }}</strong></p>
+			    </div>
+		  </div>
+   	  	
+   	  		<div class="col-md-8">
+   	  			<div class="card card-body h-100  border-info">
+   	  				<p id="console"></p>
+		      <table id="game" cellspacing="0">
+		         <tr id="row0">
+		            <td id="0" onclick="clicked(0)">&#9673;</td>
+		            <td id="1" onclick="clicked(1)">&#9673;</td>
+		            <td id="2" onclick="clicked(2)">&#9673;</td>
+		            <td id="3" onclick="clicked(3)">&#9673;</td>
+		            <td id="4" onclick="clicked(4)">&#9673;</td>
+		            <td id="5" onclick="clicked(5)">&#9673;</td>
+		            <td id="6" onclick="clicked(6)">&#9673;</td>
+		         </tr>
+		         <tr id="row1">
+		            <td id="10" onclick="clicked(10)">&#9673;</td>
+		            <td id="11" onclick="clicked(11)">&#9673;</td>
+		            <td id="12" onclick="clicked(12)">&#9673;</td>
+		            <td id="13" onclick="clicked(13)">&#9673;</td>
+		            <td id="14" onclick="clicked(14)">&#9673;</td>
+		            <td id="15" onclick="clicked(15)">&#9673;</td>
+		            <td id="16" onclick="clicked(16)">&#9673;</td>
+		         </tr>
+		         <tr id="row2">
+		            <td id="20" onclick="clicked(20)">&#9673;</td>
+		            <td id="21" onclick="clicked(21)">&#9673;</td>
+		            <td id="22" onclick="clicked(22)">&#9673;</td>
+		            <td id="23" onclick="clicked(23)">&#9673;</td>
+		            <td id="24" onclick="clicked(24)">&#9673;</td>
+		            <td id="25" onclick="clicked(25)">&#9673;</td>
+		            <td id="26" onclick="clicked(26)">&#9673;</td>
+		         </tr>
+		         <tr id="row3">
+		            <td id="30" onclick="clicked(30)">&#9673;</td>
+		            <td id="31" onclick="clicked(31)">&#9673;</td>
+		            <td id="32" onclick="clicked(32)">&#9673;</td>
+		            <td id="33" onclick="clicked(33)">&#9673;</td>
+		            <td id="34" onclick="clicked(34)">&#9673;</td>
+		            <td id="35" onclick="clicked(35)">&#9673;</td>
+		            <td id="36" onclick="clicked(36)">&#9673;</td>
+		         </tr>
+		         <tr id="row4">
+		            <td id="40" onclick="clicked(40)">&#9673;</td>
+		            <td id="41" onclick="clicked(41)">&#9673;</td>
+		            <td id="42" onclick="clicked(42)">&#9673;</td>
+		            <td id="43" onclick="clicked(43)">&#9673;</td>
+		            <td id="44" onclick="clicked(44)">&#9673;</td>
+		            <td id="45" onclick="clicked(45)">&#9673;</td>
+		            <td id="46" onclick="clicked(46)">&#9673;</td>
+		         </tr>
+		         <tr id="row5">
+		            <td id="50" onclick="clicked(50)">&#9673;</td>
+		            <td id="51" onclick="clicked(51)">&#9673;</td>
+		            <td id="52" onclick="clicked(52)">&#9673;</td>
+		            <td id="53" onclick="clicked(53)">&#9673;</td>
+		            <td id="54" onclick="clicked(54)">&#9673;</td>
+		            <td id="55" onclick="clicked(55)">&#9673;</td>
+		            <td id="56" onclick="clicked(56)">&#9673;</td>
+		         </tr>
+		      </table>
+		  </div>
+		    </div>
+	     </div>
+      <br>
+    </div>
+   </body>
+</html>
